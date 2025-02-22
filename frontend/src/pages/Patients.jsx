@@ -1,23 +1,45 @@
 import React from "react";
 import "./Patients.css";
-import { FaUser } from "react-icons/fa";
+import { FaUserInjured } from "react-icons/fa";
 
-const patients = [
-  { id: 1, name: "Alice Johnson", condition: "Flu", img: "/images/patient1.jpg" },
-  { id: 2, name: "Bob Williams", condition: "Diabetes", img: "/images/patient2.jpg" },
+const patientsData = [
+  {
+    id: 1,
+    name: "John Doe",
+    condition: "Flu",
+    image: "https://i.imgur.com/your-image.jpg",
+    admitted: true,
+  },
+  {
+    id: 2,
+    name: "Sarah Connor",
+    condition: "Fracture",
+    image: "https://i.imgur.com/your-image.jpg",
+    admitted: false,
+  },
+  {
+    id: 3,
+    name: "Michael Scott",
+    condition: "Cold & Fever",
+    image: "https://i.imgur.com/your-image.jpg",
+    admitted: true,
+  },
 ];
 
 const Patients = () => {
   return (
     <div className="patients-container">
-      <h1>Our Patients</h1>
+      <h2 className="patients-title">Our Patients</h2>
       <div className="patients-list">
-        {patients.map((patient) => (
+        {patientsData.map((patient) => (
           <div key={patient.id} className="patient-card">
-            <img src={patient.img} alt={patient.name} className="patient-img" />
-            <h3>{patient.name}</h3>
-            <p>Condition: {patient.condition}</p>
-            <FaUser className="patient-icon" />
+            <img src={patient.image} alt={patient.name} className="patient-image" />
+            <h3 className="patient-name">{patient.name}</h3>
+            <p className="patient-condition">{patient.condition}</p>
+            <p className={`admission-status ${patient.admitted ? "admitted" : "not-admitted"}`}>
+              {patient.admitted ? "Admitted" : "Discharged"}
+            </p>
+            <FaUserInjured className="patient-icon" />
           </div>
         ))}
       </div>
@@ -26,3 +48,4 @@ const Patients = () => {
 };
 
 export default Patients;
+

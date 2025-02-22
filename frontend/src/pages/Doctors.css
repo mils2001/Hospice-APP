@@ -1,59 +1,57 @@
-/* Doctors.css */
 .doctors-container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
     text-align: center;
+    padding: 20px;
   }
   
   .doctors-title {
     font-size: 2rem;
-    color: #333;
     margin-bottom: 20px;
   }
   
   .doctors-list {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+    flex-wrap: wrap;
   }
   
   .doctor-card {
-    background: #fff;
-    padding: 20px;
+    background: white;
     border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 250px;
     text-align: center;
-    width: 280px;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.8s forwards;
   }
   
   .doctor-card:hover {
-    transform: translateY(-10px);
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
   
   .doctor-image {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    object-fit: cover;
     margin-bottom: 10px;
+    object-fit: cover;
   }
   
   .doctor-name {
-    font-size: 1.5rem;
-    color: #444;
+    font-size: 1.2rem;
+    font-weight: bold;
   }
   
   .doctor-specialty {
-    font-size: 1rem;
-    color: #777;
-    margin: 5px 0;
+    color: gray;
+    font-size: 0.9rem;
   }
   
   .availability {
-    font-size: 1rem;
     font-weight: bold;
   }
   
@@ -64,4 +62,29 @@
   .not-available {
     color: red;
   }
+  
+  .doctor-icon {
+    font-size: 2rem;
+    margin-top: 10px;
+    color: #007bff;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .doctor-icon:hover {
+    transform: rotate(10deg);
+  }
+  
+  /* Fade-in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  
   
