@@ -1,18 +1,45 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./Navbar.css"; // Create this CSS file
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
+import "./Navbar.css";
+import { FaBars, FaTimes } from "react-icons/fa";
 
-function Navbar() {
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <nav className="navbar">
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/patients">Patients</Link></li>
-        <li><Link to="/doctors">Doctors</Link></li>
-        <li><Link to="/appointments">Appointments</Link></li>
+      <div className="logo">Hospice</div>
+
+      {/* Mobile Toggle Button */}
+      <div className="menu-icon" onClick={() => setIsOpen(!isOpen)}>
+        {isOpen ? <FaTimes /> : <FaBars />}
+      </div>
+
+      <ul className={isOpen ? "nav-links open" : "nav-links"}>
+        <li>
+          <NavLink exact to="/" activeClassName="active">
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/doctors" activeClassName="active">
+            Doctors
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/patients" activeClassName="active">
+            Patients
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/appointments" activeClassName="active">
+            Appointments
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );
-}
+};
 
 export default Navbar;
+

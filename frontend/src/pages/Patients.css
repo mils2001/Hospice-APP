@@ -1,0 +1,39 @@
+.patients-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .patients-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .patient-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 250px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .patient-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .patient-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .patient-icon {
+    font-size: 2rem;
+    color: #007bff;
+    margin-top: 10px;
+  }
+  
