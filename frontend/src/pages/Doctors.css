@@ -1,0 +1,39 @@
+.doctors-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .doctors-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .doctor-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 250px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .doctor-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .doctor-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .doctor-icon {
+    font-size: 2rem;
+    color: #007bff;
+    margin-top: 10px;
+  }
+  
