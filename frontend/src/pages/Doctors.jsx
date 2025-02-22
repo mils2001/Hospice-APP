@@ -7,24 +7,27 @@ const doctorsData = [
     id: 1,
     name: "Dr. James Smith",
     specialty: "Cardiologist",
-    image: "/images/doctor1.jpg",
+    image: "https://i.imgur.com/VYaZ9nf.jpeg", // Corrected
     available: true,
   },
   {
     id: 2,
     name: "Dr. Anna Johnson",
     specialty: "Neurologist",
-    image: "/images/doctor2.jpg",
+    image: "", // Corrected
     available: false,
   },
   {
     id: 3,
     name: "Dr. Michael Brown",
     specialty: "Dermatologist",
-    image: "/images/doctor3.jpg",
+    image: "https://i.imgur.com/820978a4.jpg", // Corrected
     available: true,
   },
 ];
+
+  
+
 
 const Doctors = () => {
   return (
