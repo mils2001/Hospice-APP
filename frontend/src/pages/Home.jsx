@@ -1,5 +1,5 @@
 import React from "react";
-import "./";
+import "./Home.css";
 import { FaStethoscope, FaUserMd, FaCalendarCheck } from "react-icons/fa";
 
 const Home = () => {
@@ -35,4 +35,3 @@ const Home = () => {
 };
 
 export default Home;
-
