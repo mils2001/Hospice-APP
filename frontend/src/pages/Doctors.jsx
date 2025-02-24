@@ -1,45 +1,27 @@
-import React from "react";
-import "./Doctors.css";
-import { FaUserMd } from "react-icons/fa";
-
-const doctorsData = [
-  {
-    id: 1,
-    name: "Dr. Jennifer Rodrigez",
-    specialty: "Cardiologist",
-    image: "https://i.imgur.com/9OH83Nn.jpeg",
-    available: true,
-  },
-  {
-    id: 2,
-    name: "Dr. James Smith",
-    specialty: "Neurologist",
-    image: "https://imgur.com/rtkDHlF.jpeg",
-    available: false,
-  },
-  {
-    id: 3,
-    name: "Dr. Michael Brown",
-    specialty: "Dermatologist",
-    image: "https://imgur.com/uBjW12h.jpeg",
-    available: true,
-  },
-];
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "./Doctors.css"; // Make sure to create and style this file
 
 const Doctors = () => {
+  const [doctors, setDoctors] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:5000/api/doctors") // Adjust backend URL if needed
+      .then(response => setDoctors(response.data))
+      .catch(error => console.error("Error fetching doctors:", error));
+  }, []);
+
   return (
     <div className="doctors-container">
-      <h2 className="doctors-title">Meet Our Specialists</h2>
+      <h2 className="doctors-title">Our Doctors</h2>
       <div className="doctors-list">
-        {doctorsData.map((doctor) => (
-          <div key={doctor.id} className="doctor-card fade-in">
-            <img src={doctor.image} alt={doctor.name} className="doctor-image" />
-            <h3 className="doctor-name">{doctor.name}</h3>
-            <p className="doctor-specialty">{doctor.specialty}</p>
-            <p className={`availability ${doctor.available ? "available" : "not-available"}`}>
-              {doctor.available ? "Available" : "Not Available"}
-            </p>
-            <FaUserMd className="doctor-icon" />
+        {doctors.map(doctor => (
+          <div key={doctor.id} className="doctor-card">
+            <img src={doctor.image_url} alt={doctor.name} className="doctor-photo" />
+            <h3>{doctor.name}</h3>
+            <p>{doctor.specialization}</p>
+            <p>📞 {doctor.contact}</p>
+            <p>📧 {doctor.email}</p>
           </div>
         ))}
       </div>

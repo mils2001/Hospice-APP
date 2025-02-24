@@ -51,6 +51,31 @@ app.get("/api/patients", (req, res) => {
   });
 });
 
+// API to Fetch Doctors Data
+app.get("/api/doctors", (req, res) => {
+    const query = "SELECT id, name, specialization, contact, email, image_url FROM doctors";
+    db.query(query, (err, results) => {
+      if (err) {
+        console.error("Error fetching doctors:", err);
+        return res.status(500).json({ error: err.message });
+      }
+  
+      // Log the results to check data
+      console.log("Fetched Doctors Data:", results);
+  
+      // Map image URLs correctly
+      const doctors = results.map(doctor => ({
+        ...doctor,
+        image_url: doctor.image_url 
+          ? `http://localhost:5000/images/${doctor.image_url}` 
+          : null
+      }));
+  
+      res.json(doctors);
+    });
+  });
+  
+
 // ✅ Start Server
 app.listen(5000, () => console.log("🚀 Server running on port 5000"));
 
