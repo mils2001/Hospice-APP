@@ -1,31 +1,35 @@
 import React from "react";
+import Sidebar from "../components/Sidebar";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import "./Dashboard.css";
-import { FaUserMd, FaUser, FaCalendarCheck, FaHospital } from "react-icons/fa";
+
+const data = [
+  { name: "Patients", count: 120 },
+  { name: "Doctors", count: 25 },
+  { name: "Appointments", count: 95 },
+];
 
 const Dashboard = () => {
   return (
     <div className="dashboard-container">
-      <h2 className="dashboard-title">Hospital Dashboard</h2>
-      <div className="dashboard-cards">
-        <div className="dashboard-card">
-          <FaUserMd className="dashboard-icon doctor-icon" />
-          <h3>Doctors</h3>
-          <p>25 Specialists</p>
+      <Sidebar />
+      <div className="dashboard-content">
+        <h1>Dashboard Overview</h1>
+        <div className="stats">
+          <div className="stat-card">Total Patients: 120</div>
+          <div className="stat-card">Total Doctors: 25</div>
+          <div className="stat-card">Appointments: 95</div>
         </div>
-        <div className="dashboard-card">
-          <FaUser className="dashboard-icon patient-icon" />
-          <h3>Patients</h3>
-          <p>120 Active Patients</p>
-        </div>
-        <div className="dashboard-card">
-          <FaCalendarCheck className="dashboard-icon appointment-icon" />
-          <h3>Appointments</h3>
-          <p>45 Scheduled</p>
-        </div>
-        <div className="dashboard-card">
-          <FaHospital className="dashboard-icon hospital-icon" />
-          <h3>Departments</h3>
-          <p>10 Medical Units</p>
+        <div className="chart">
+          <h2>Hospital Statistics</h2>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={data}>
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip />
+              <Bar dataKey="count" fill="#4CAF50" />
+            </BarChart>
+          </ResponsiveContainer>
         </div>
       </div>
     </div>
@@ -33,3 +37,6 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+
+
