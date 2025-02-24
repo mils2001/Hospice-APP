@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home.jsx";
-import Patients from "./pages/Patients.jsx";
-import Doctors from "./pages/Doctors.jsx";
-import Appointments from "./pages/Appointments.jsx";
-import Dashboard from "./pages/Dashboard.jsx";
+import Home from "./pages/Home";
+import Patients from "./pages/Patients";
+import Doctors from "./pages/Doctors";
+import Appointments from "./pages/Appointments";
+import Dashboard from "./components/Dashboard/Dashboard";
 import Navbar from "./components/Navbar";
 
 function App() {
@@ -23,6 +23,8 @@ function App() {
 }
 
 export default App;
+
+
 
 
 
