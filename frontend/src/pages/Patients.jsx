@@ -5,23 +5,23 @@ import { FaUserInjured } from "react-icons/fa";
 const patientsData = [
   {
     id: 1,
-    name: "John Doe",
+    name: "Happy Melanin",
     condition: "Flu",
-    image: "https://i.imgur.com/your-image.jpg",
+    image: "https://imgur.com/FRU0YvC.jpeg",
     admitted: true,
   },
   {
     id: 2,
-    name: "Sarah Connor",
+    name: "Mike Blake",
     condition: "Fracture",
-    image: "https://i.imgur.com/your-image.jpg",
+    image: "https://imgur.com/sWmtCz1.jpeg",
     admitted: false,
   },
   {
     id: 3,
-    name: "Michael Scott",
+    name: "Talia Bailey",
     condition: "Cold & Fever",
-    image: "https://i.imgur.com/your-image.jpg",
+    image: "https://imgur.com/Xfklfos.jpeg",
     admitted: true,
   },
 ];

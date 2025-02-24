@@ -14,14 +14,14 @@ const doctorsData = [
     id: 2,
     name: "Dr. Anna Johnson",
     specialty: "Neurologist",
-    image: "https://imgur.com/2fc1834f-3272-48cb-a991-bc3bb96e0d34.jpeg",
+    image: "https://imgur.com/rtkDHlF.jpeg",
     available: false,
   },
   {
     id: 3,
     name: "Dr. Michael Brown",
     specialty: "Dermatologist",
-    image: "https://i.imgur.com/820978a4.jpg",
+    image: "https://imgur.com/uBjW12h.jpeg",
     available: true,
   },
 ];
