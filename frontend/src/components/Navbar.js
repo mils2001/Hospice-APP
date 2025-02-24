@@ -36,10 +36,14 @@ const Navbar = () => {
             Appointments
           </NavLink>
         </li>
+        <li>
+          <NavLink to="/dashboard" activeClassName="active">
+            Dashboard
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );
 };
 
 export default Navbar;
-
