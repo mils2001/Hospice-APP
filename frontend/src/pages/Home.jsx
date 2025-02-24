@@ -8,11 +8,11 @@ const Home = () => {
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-text">
-          <h1>Welcome to Our Hospital</h1>
+          <h1>Welcome to Our Hospice Medical</h1>
           <p>Your health, our priority.</p>
           <button className="cta-button">Book an Appointment</button>
         </div>
-        <img src="/images/hospital-hero.jpg" alt="Hospital" className="hero-image" />
+        <img src="https://imgur.com/2UkCmzV.jpeg" alt="Hospice" className="hero-image" />
       </section>
 
       {/* Features Section */}
