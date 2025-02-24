@@ -14,7 +14,7 @@ const doctorsData = [
     id: 2,
     name: "Dr. Anna Johnson",
     specialty: "Neurologist",
-    image: "blob:https://imgur.com/2fc1834f-3272-48cb-a991-bc3bb96e0d34.jpeg",
+    image: "https://imgur.com/2fc1834f-3272-48cb-a991-bc3bb96e0d34.jpeg",
     available: false,
   },
   {
