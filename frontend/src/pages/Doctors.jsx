@@ -5,14 +5,14 @@ import { FaUserMd } from "react-icons/fa";
 const doctorsData = [
   {
     id: 1,
-    name: "Dr. James Smith",
+    name: "Dr. Jennifer Rodrigez",
     specialty: "Cardiologist",
     image: "https://i.imgur.com/9OH83Nn.jpeg",
     available: true,
   },
   {
     id: 2,
-    name: "Dr. Anna Johnson",
+    name: "Dr. James Smith",
     specialty: "Neurologist",
     image: "https://imgur.com/rtkDHlF.jpeg",
     available: false,
