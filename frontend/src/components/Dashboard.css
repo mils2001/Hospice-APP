@@ -1,0 +1,55 @@
+/* Dashboard.css */
+.dashboard-container {
+    text-align: center;
+    padding: 40px;
+    background-color: #f4f6f9;
+  }
+  
+  .dashboard-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .dashboard-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .dashboard-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 220px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .dashboard-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .dashboard-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
+  
+  .doctor-icon {
+    color: #007bff;
+  }
+  
+  .patient-icon {
+    color: #28a745;
+  }
+  
+  .appointment-icon {
+    color: #ffc107;
+  }
+  
+  .hospital-icon {
+    color: #dc3545;
+  }
+  
