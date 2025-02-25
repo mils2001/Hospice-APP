@@ -1,65 +1,79 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./Dashboard.css"; // Ensure you have styles
+import { Bar, Line } from "react-chartjs-2";
+import "chart.js/auto";
+import "./Dashboard.css"; // Ensure you have styling for a clean UI
 
 const Dashboard = () => {
-  const [totalPatients, setTotalPatients] = useState(0);
-  const [totalDoctors, setTotalDoctors] = useState(0);
-  const [upcomingAppointments, setUpcomingAppointments] = useState([]);
+  const [appointments, setAppointments] = useState([]);
 
   useEffect(() => {
-    // Fetch total patients
-    axios.get("http://localhost:5000/api/patients/count")
-      .then(response => setTotalPatients(response.data.total))
-      .catch(error => console.error("Error fetching patient count:", error));
-
-    // Fetch total doctors
-    axios.get("http://localhost:5000/api/doctors/count")
-      .then(response => setTotalDoctors(response.data.total))
-      .catch(error => console.error("Error fetching doctor count:", error));
-
-    // Fetch upcoming appointments
-    axios.get("http://localhost:5000/api/appointments/upcoming")
-      .then(response => setUpcomingAppointments(response.data))
-      .catch(error => console.error("Error fetching upcoming appointments:", error));
+    axios
+      .get("http://localhost:5000/api/appointments")
+      .then((response) => setAppointments(response.data))
+      .catch((error) => console.error("Error fetching appointments:", error));
   }, []);
+
+  // ✅ Data for Charts
+  const appointmentCounts = appointments.reduce((acc, appt) => {
+    acc[appt.status] = (acc[appt.status] || 0) + 1;
+    return acc;
+  }, {});
+
+  const barChartData = {
+    labels: Object.keys(appointmentCounts),
+    datasets: [
+      {
+        label: "Appointments by Status",
+        data: Object.values(appointmentCounts),
+        backgroundColor: ["#4CAF50", "#FF9800", "#F44336"], // Green, Orange, Red
+        borderColor: "#333",
+        borderWidth: 1,
+      },
+    ],
+  };
 
   return (
     <div className="dashboard-container">
-      <h2>🏥 Hospital Dashboard</h2>
+      <h2>📊 Hospital Dashboard</h2>
 
-      <div className="dashboard-cards">
-        <div className="card">
-          <h3>👨‍⚕️ Total Doctors</h3>
-          <p>{totalDoctors}</p>
-        </div>
-
-        <div className="card">
-          <h3>🧑‍🤝‍🧑 Total Patients</h3>
-          <p>{totalPatients}</p>
-        </div>
+      {/* 🔹 Bar Chart for Appointment Status */}
+      <div className="chart-container">
+        <Bar data={barChartData} />
       </div>
 
-      <h3>📅 Upcoming Appointments</h3>
-      <div className="appointments">
-        {upcomingAppointments.length === 0 ? (
-          <p>No upcoming appointments.</p>
-        ) : (
-          upcomingAppointments.map(appointment => (
-            <div key={appointment.id} className="appointment-card">
-              <p><strong>Patient:</strong> {appointment.patient_name}</p>
-              <p><strong>Doctor:</strong> {appointment.doctor_name}</p>
-              <p><strong>Date:</strong> {appointment.appointment_date}</p>
-              <p><strong>Status:</strong> {appointment.status}</p>
-            </div>
-          ))
-        )}
-      </div>
+      {/* 🔹 Upcoming Appointments Table */}
+      <h3>🗓 Upcoming Appointments</h3>
+      <table className="appointments-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Patient Name</th>
+            <th>Doctor</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {appointments.map((appt, index) => (
+            <tr key={appt.id}>
+              <td>{index + 1}</td>
+              <td>{appt.patient_name}</td>
+              <td>{appt.doctor_name}</td>
+              <td>{new Date(appt.appointment_date).toLocaleString()}</td>
+              <td className={appt.status.toLowerCase()}>{appt.status}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
 
 export default Dashboard;
+
+
+
 
 
 
