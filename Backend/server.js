@@ -87,6 +87,18 @@ app.post("/api/login", async (req, res) => {
   }
 });
 
+// ✅ Get Logged-in User's Details
+app.get("/api/user", verifyToken, async (req, res) => {
+  try {
+    const [user] = await db.query("SELECT id, name, email FROM users WHERE id = ?", [req.user.id]);
+    if (user.length === 0) return res.status(404).json({ message: "User not found" });
+    res.json(user[0]);
+  } catch (err) {
+    console.error("❌ Error fetching user details:", err);
+    res.status(500).json({ message: "Failed to fetch user details" });
+  }
+});
+
 // ✅ Protected Route Example (Dashboard)
 app.get("/api/dashboard", verifyToken, (req, res) => {
   res.json({ success: true, message: "Welcome to the Dashboard!", user: req.user });
@@ -130,6 +142,7 @@ app.get("/api/appointments", verifyToken, async (req, res) => {
 // ✅ Start Server
 const PORT = 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+
 
 
 
