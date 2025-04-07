@@ -12,7 +12,7 @@ app.use(express.json());
 // ✅ Serve static images from "public/images"
 app.use("/images", express.static(path.join(__dirname, "public/images")));
 
-const SECRET_KEY = "your_secret_key"; // 🔹 Change this to a secure secret key!
+const SECRET_KEY = "6353837179dac301fd7a10beb47c32b"; // 🔹 Change this to a secure secret key!
 
 // ✅ MySQL Connection
 const dbConfig = {
@@ -79,7 +79,7 @@ app.post("/api/login", async (req, res) => {
     if (!isPasswordValid) return res.status(401).json({ error: "Invalid email or password." });
 
     // Generate JWT Token
-    const token = jwt.sign({ id: user.id, email: user.email }, SECRET_KEY, { expiresIn: "2h" });
+    const token = jwt.sign({ id: user.id, email: user.email }, SECRET_KEY, { expiresIn: "7d" });
     res.json({ success: true, token, user: { id: user.id, name: user.name, email: user.email } });
   } catch (err) {
     console.error("❌ Login error:", err);
